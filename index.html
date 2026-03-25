@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Практическое руководство по правильному использованию нейросетей. Промты, шаблоны, принципы и тест — всё, чтобы ИИ работал на тебя, а не вместо тебя."/>
+  <meta property="og:title" content="Используй ИИ правильно"/>
+  <meta property="og:description" content="Нейросеть — мощный инструмент. Но только если ты сам думаешь головой. Руководство с промтами, шаблонами и тестом."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="ru_RU"/>
+  <title>Используй ИИ правильно</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-wrap">
+    <a class="nav-brand" href="#hero">
+      <span class="brand-dot"></span>ИИ Правильно
+    </a>
+    <button class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#principles">Принципы</a></li>
+      <li><a href="#prompts">Промты</a></li>
+      <li><a href="#donts">Не надо</a></li>
+      <li><a href="#study">Учёба</a></li>
+      <li><a href="#work">Работа</a></li>
+      <li><a href="#myths">Мифы</a></li>
+      <li><a href="#quiz">Тест</a></li>
+      <li><a href="#templates" class="nav-cta">Шаблоны ✦</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" title="Сменить тему">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero" class="hero">
+  <div class="hero-noise"></div>
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-pulse"></span>
+      Практическое руководство
+    </div>
+    <h1 class="hero-h1">
+      Используй ИИ<br/>
+      <span class="glitch" data-text="правильно">правильно</span>
+    </h1>
+    <p class="hero-sub">
+      Нейросеть — мощный инструмент.<br/>
+      Но только если ты сам думаешь головой.
+    </p>
+    <div class="hero-btns">
+      <a href="#principles" class="btn btn-glow">Начать читать</a>
+      <a href="#templates" class="btn btn-outline">Готовые промты →</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="mouse"><div class="mouse-wheel"></div></div>
+      <span>Скролль вниз</span>
+    </div>
+  </div>
+
+  <div class="hero-3d-grid"></div>
+</section>
+
+<!-- ===== QUICK PILLS ===== -->
+<div class="pills-bar">
+  <div class="pills-track">
+    <span class="pill">🧠 Думай сам</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">🔍 Проверяй факты</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">💬 Задавай вопросы</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">✍️ Создавай, не копируй</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">🎯 Будь конкретен</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">🧠 Думай сам</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">🔍 Проверяй факты</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">💬 Задавай вопросы</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">✍️ Создавай, не копируй</span>
+    <span class="pill pill-dim">→</span>
+    <span class="pill">🎯 Будь конкретен</span>
+  </div>
+</div>
+
+<!-- ===== PRINCIPLES ===== -->
+<section id="principles" class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag">Основы</span>
+      <h2>Главные принципы</h2>
+      <p class="sec-desc">Перед тем как открывать ChatGPT — запомни это</p>
+    </div>
+
+    <div class="principles-grid">
+
+      <div class="principle-card p-blue reveal">
+        <div class="pc-num">01</div>
+        <div class="pc-icon">🧠</div>
+        <h3>ИИ — инструмент, не мозг</h3>
+        <p>Нейросеть не думает. Она предсказывает следующее слово, основываясь на статистике. Твоя задача — ставить ей задачи, а не делегировать мышление.</p>
+        <div class="pc-rule">
+          <span class="rule-no">❌</span> «Реши за меня»
+          <span class="rule-vs">vs</span>
+          <span class="rule-yes">✅</span> «Помоги мне разобраться»
+        </div>
+      </div>
+
+      <div class="principle-card p-purple reveal">
+        <div class="pc-num">02</div>
+        <div class="pc-icon">🔍</div>
+        <h3>Проверяй всё, что говорит ИИ</h3>
+        <p>ИИ уверенно врёт. Называет несуществующие книги, придумывает цитаты, путает даты. Это называется «галлюцинации» — и это не баг, это особенность архитектуры.</p>
+        <div class="pc-rule">
+          <span class="rule-no">❌</span> Копировать в реферат
+          <span class="rule-vs">vs</span>
+          <span class="rule-yes">✅</span> Проверить в Wikipedia
+        </div>
+      </div>
+
+      <div class="principle-card p-green reveal">
+        <div class="pc-num">03</div>
+        <div class="pc-icon">💬</div>
+        <h3>Будь конкретным в запросах</h3>
+        <p>Размытый вопрос = размытый ответ. Чем больше контекста ты дашь — уровень знаний, цель, формат ответа — тем точнее и полезнее будет результат.</p>
+        <div class="pc-rule">
+          <span class="rule-no">❌</span> «Расскажи про физику»
+          <span class="rule-vs">vs</span>
+          <span class="rule-yes">✅</span> «Объясни 2-й закон Ньютона, я в 9 классе»
+        </div>
+      </div>
+
+      <div class="principle-card p-orange reveal">
+        <div class="pc-num">04</div>
+        <div class="pc-icon">✍️</div>
+        <h3>Создавай сам, используй ИИ для улучшения</h3>
+        <p>Напиши черновик сам — потом попроси ИИ его улучшить. Это в 10 раз полезнее для тебя, чем попросить ИИ написать текст с нуля вместо тебя.</p>
+        <div class="pc-rule">
+          <span class="rule-no">❌</span> «Напиши за меня»
+          <span class="rule-vs">vs</span>
+          <span class="rule-yes">✅</span> «Улучши мой черновик»
+        </div>
+      </div>
+
+      <div class="principle-card p-cyan reveal">
+        <div class="pc-num">05</div>
+        <div class="pc-icon">🎯</div>
+        <h3>Используй итерации</h3>
+        <p>Не принимай первый ответ как финальный. Уточняй, переспрашивай, просись развернуть тему. Диалог с ИИ — это как разговор с умным собеседником.</p>
+        <div class="pc-rule">
+          <span class="rule-no">❌</span> Один запрос — конец
+          <span class="rule-vs">vs</span>
+          <span class="rule-yes">✅</span> «Можешь подробнее про…?»
+        </div>
+      </div>
+
+      <div class="principle-card p-pink reveal">
+        <div class="pc-num">06</div>
+        <div class="pc-icon">🛡️</div>
+        <h3>Защити своё мышление</h3>
+        <p>Если каждое задание делает за тебя ИИ — ты перестаёшь тренировать мозг. Используй ИИ как тренажёр: пусть подсказывает, объясняет, но не делает работу за тебя.</p>
+        <div class="pc-rule">
+          <span class="rule-no">❌</span> Атрофия навыков
+          <span class="rule-vs">vs</span>
+          <span class="rule-yes">✅</span> Рост через трудность
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROMPTS ===== -->
+<section id="prompts" class="section section-dark">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag">Промтинг</span>
+      <h2>Полезные промты с объяснением</h2>
+      <p class="sec-desc">Конкретные примеры запросов, которые реально работают</p>
+    </div>
+
+    <div class="prompt-search-wrap reveal">
+      <input type="text" id="promptSearch" class="prompt-search" placeholder="Поиск по промтам..."/>
+      <span class="copy-counter" id="copyCounter">Скопировано: 0</span>
+    </div>
+
+    <div class="prompts-tabs reveal">
+      <button class="ptab active" data-tab="study">📚 Учёба</button>
+      <button class="ptab" data-tab="work">💼 Работа</button>
+      <button class="ptab" data-tab="creative">🎨 Творчество</button>
+      <button class="ptab" data-tab="problem">🔧 Задачи</button>
+    </div>
+
+    <div class="prompts-content">
+
+      <!-- STUDY TAB -->
+      <div class="ptab-panel active" id="tab-study">
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Объяснение</span>
+            <span class="prompt-level level-any">Любой уровень</span>
+          </div>
+          <div class="prompt-text" id="p1">Объясни мне [тема] так, будто мне 12 лет. Используй простые аналогии из повседневной жизни.</div>
+          <button class="copy-btn" data-copy="p1">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Простые аналогии помогают ИИ выбрать нужный уровень объяснения. Потом можно попросить «теперь объясни глубже» — и ты будешь строить понимание постепенно.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Проверка знаний</span>
+            <span class="prompt-level level-cool">Умный подход</span>
+          </div>
+          <div class="prompt-text" id="p2">Задай мне 5 вопросов, чтобы проверить, насколько я понимаю тему [тема]. После каждого моего ответа говори, правильно ли я понял, и объясняй ошибки.</div>
+          <button class="copy-btn" data-copy="p2">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Активное воспроизведение информации (recall) — самый эффективный метод запоминания по данным когнитивной психологии. Намного лучше пассивного чтения.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Разбор ошибок</span>
+            <span class="prompt-level level-cool">Умный подход</span>
+          </div>
+          <div class="prompt-text" id="p3">Вот моё решение задачи: [вставить решение]. Не давай правильный ответ сразу — найди ошибку в моих рассуждениях и задай наводящий вопрос, чтобы я сам исправил её.</div>
+          <button class="copy-btn" data-copy="p3">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Ты сохраняешь «эффект инсайта» — когда мозг сам доходит до ответа, нейронные связи формируются намного прочнее, чем при получении готового решения.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Запоминание</span>
+            <span class="prompt-level level-any">Любой уровень</span>
+          </div>
+          <div class="prompt-text" id="p4">Помоги мне запомнить [тема/список]. Придумай смешную историю или аналогию, которая свяжет все ключевые понятия.</div>
+          <button class="copy-btn" data-copy="p4">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Мозг запоминает эмоционально окрашенные и нарративные истории гораздо лучше, чем сухие факты. Метод Memory Palace в действии.
+          </div>
+        </div>
+      </div>
+
+      <!-- WORK TAB -->
+      <div class="ptab-panel" id="tab-work">
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Код</span>
+            <span class="prompt-level level-cool">Умный подход</span>
+          </div>
+          <div class="prompt-text" id="p5">Найди ошибки в моём коде и объясни каждую — что пошло не так и почему. Не переписывай код целиком, только укажи проблемные места.
+
+[вставить код]</div>
+          <button class="copy-btn" data-copy="p5">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Ты учишься на своих ошибках, а не просто получаешь «правильный» код. Через 3–4 такие сессии ты перестанешь делать те же ошибки.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Текст</span>
+            <span class="prompt-level level-any">Любой уровень</span>
+          </div>
+          <div class="prompt-text" id="p6">Вот мой черновик письма/статьи/поста:
+[текст]
+
+Улучши стиль и структуру, но сохрани мой голос и смысл. Объясни, что и почему ты изменил.</div>
+          <button class="copy-btn" data-copy="p6">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Ты создаёшь сам — ИИ только полирует. Плюс ты учишься на его правках, видя конкретные улучшения и понимая принцип.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Анализ</span>
+            <span class="prompt-level level-cool">Умный подход</span>
+          </div>
+          <div class="prompt-text" id="p7">Сыграй роль строгого критика. Вот моя идея/план/концепция:
+[описание]
+
+Найди 5 самых слабых мест и возможные возражения. Не лести, будь честен.</div>
+          <button class="copy-btn" data-copy="p7">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> ИИ по умолчанию склонен соглашаться («да, отличная идея!»). Явный запрос на критику ломает этот паттерн и даёт реально полезную обратную связь.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Брейнсторм</span>
+            <span class="prompt-level level-any">Любой уровень</span>
+          </div>
+          <div class="prompt-text" id="p8">Генерируй идеи для [задача/проект]. Мне нужно 10 вариантов — от банальных до нестандартных. Не объясняй каждую, просто список. Потом я выберу лучшие и мы их развернём.</div>
+          <button class="copy-btn" data-copy="p8">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Быстрый список без объяснений — это как брейнсторм с коллегой. Ты сохраняешь контроль над финальным решением, ИИ даёт сырой материал.
+          </div>
+        </div>
+      </div>
+
+      <!-- CREATIVE TAB -->
+      <div class="ptab-panel" id="tab-creative">
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Писательство</span>
+            <span class="prompt-level level-any">Любой уровень</span>
+          </div>
+          <div class="prompt-text" id="p9">Я пишу рассказ. Вот начало:
+[текст]
+
+Задай мне 3 вопроса о персонажах и сюжете, чтобы помочь мне лучше продумать историю. Не пиши продолжение за меня.</div>
+          <button class="copy-btn" data-copy="p9">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Хорошие вопросы разблокируют твоё собственное творчество. ИИ выступает в роли редактора, а не соавтора — твоя история остаётся твоей.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Стиль</span>
+            <span class="prompt-level level-cool">Умный подход</span>
+          </div>
+          <div class="prompt-text" id="p10">Перепиши этот текст в трёх разных стилях: 1) академический, 2) разговорный молодёжный, 3) как в новостной статье. Покажи три варианта рядом.
+
+[текст]</div>
+          <button class="copy-btn" data-copy="p10">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Сравнение трёх вариантов рядом — это урок по стилистике. Ты видишь как работают разные регистры речи и можешь использовать это в своих текстах.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Вдохновение</span>
+            <span class="prompt-level level-any">Любой уровень</span>
+          </div>
+          <div class="prompt-text" id="p11">Дай мне 7 нестандартных идей для [тип творчества — рисунок/музыка/фото/видео] на тему [тема]. Хочу что-то необычное, чего я точно не видел раньше. Без банальщины.</div>
+          <button class="copy-btn" data-copy="p11">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Явное «без банальщины» смещает ИИ от стандартных ответов к более оригинальным. Используй как стартовую точку для своих идей.
+          </div>
+        </div>
+      </div>
+
+      <!-- PROBLEM TAB -->
+      <div class="ptab-panel" id="tab-problem">
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Декомпозиция</span>
+            <span class="prompt-level level-cool">Умный подход</span>
+          </div>
+          <div class="prompt-text" id="p12">У меня есть большая задача: [задача].
+
+Разбей её на конкретные маленькие шаги, которые можно сделать за 30–60 минут каждый. Отметь зависимости между шагами.</div>
+          <button class="copy-btn" data-copy="p12">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Большие задачи пугают и вызывают прокрастинацию. Декомпозиция на конкретные маленькие шаги — классический метод GTD и Agile.
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Решение проблем</span>
+            <span class="prompt-level level-cool">Умный подход</span>
+          </div>
+          <div class="prompt-text" id="p13">Я застрял на проблеме: [описание].
+
+Не давай решение сразу. Сначала задай уточняющие вопросы, чтобы лучше понять проблему. После моих ответов предложи несколько возможных подходов с плюсами и минусами каждого.</div>
+          <button class="copy-btn" data-copy="p13">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Структурированный разбор проблемы часто важнее самого решения. Уточняющие вопросы помогают понять: может, ты решаешь не ту проблему?
+          </div>
+        </div>
+
+        <div class="prompt-card reveal">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Принятие решений</span>
+            <span class="prompt-level level-any">Любой уровень</span>
+          </div>
+          <div class="prompt-text" id="p14">Мне нужно выбрать между: [вариант A] и [вариант B].
+
+Составь таблицу сравнения по критериям: [критерий 1], [критерий 2], [критерий 3]. Потом скажи, какой вариант ты бы порекомендовал и почему — но признай, если нет однозначного ответа.</div>
+          <button class="copy-btn" data-copy="p14">Копировать</button>
+          <div class="prompt-why">
+            <strong>Почему это работает:</strong> Таблица сравнения принудительно структурирует мышление. Признание неопределённости («нет однозначного ответа») делает ответ честнее.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== DON'TS ===== -->
+<section id="donts" class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag sec-tag-red">Осторожно</span>
+      <h2>Что делать <em>не надо</em></h2>
+      <p class="sec-desc">Ловушки, в которые попадают почти все</p>
+    </div>
+
+    <div class="donts-list">
+
+      <div class="dont-item reveal">
+        <div class="dont-icon">📝</div>
+        <div class="dont-body">
+          <h3>Сдавать домашку, сделанную ИИ, не понимая её</h3>
+          <p>ИИ напишет сочинение — ты получишь оценку. Но на ЕГЭ или экзамене ИИ не будет рядом. Обман системы = обман себя. Ты лишаешь себя знания, которое было бы твоим.</p>
+          <div class="dont-alt">
+            <span class="alt-label">Попробуй вместо этого:</span>
+            Попроси ИИ объяснить тему и помочь написать план — а сам текст напиши сам.
+          </div>
+        </div>
+      </div>
+
+      <div class="dont-item reveal">
+        <div class="dont-icon">🤥</div>
+        <div class="dont-body">
+          <h3>Принимать всё на веру без проверки</h3>
+          <p>ИИ генерирует правдоподобно звучащий текст. Дата может быть неверной, имя перепутано, цитата придумана. Это не злой умысел — это как работает архитектура трансформеров.</p>
+          <div class="dont-alt">
+            <span class="alt-label">Попробуй вместо этого:</span>
+            Любой факт из ИИ, который важен — проверь в Wikipedia, энциклопедии или первоисточнике.
+          </div>
+        </div>
+      </div>
+
+      <div class="dont-item reveal">
+        <div class="dont-icon">🔄</div>
+        <div class="dont-body">
+          <h3>Копипастить ответ не читая</h3>
+          <p>«ИИ написал — скопировал — готово». Ты теряешь возможность развить своё мышление, рискуешь вставить ошибку или несоответствие контексту, и теряешь свой авторский голос.</p>
+          <div class="dont-alt">
+            <span class="alt-label">Попробуй вместо этого:</span>
+            Прочитай ответ, перескажи своими словами в новом сообщении — и убедишься, что понял.
+          </div>
+        </div>
+      </div>
+
+      <div class="dont-item reveal">
+        <div class="dont-icon">😶</div>
+        <div class="dont-body">
+          <h3>Использовать ИИ для обмана людей</h3>
+          <p>Выдавать ИИ-текст за свой в контексте, где это неуместно, — это обман. Это разрушает доверие, портит репутацию и, главное, убивает привычку думать и создавать самому.</p>
+          <div class="dont-alt">
+            <span class="alt-label">Попробуй вместо этого:</span>
+            Будь честен: «Я использовал ИИ для черновика, потом доработал сам» — это нормально и уважаемо.
+          </div>
+        </div>
+      </div>
+
+      <div class="dont-item reveal">
+        <div class="dont-icon">💤</div>
+        <div class="dont-body">
+          <h3>Задавать один расплывчатый вопрос и принимать первый ответ</h3>
+          <p>«Расскажи всё о Второй мировой войне» — плохой промт. Первый ответ редко бывает лучшим. ИИ работает итерациями, и второй-третий ответ после уточнений обычно намного лучше.</p>
+          <div class="dont-alt">
+            <span class="alt-label">Попробуй вместо этого:</span>
+            Начни с чёткого контекста, уточняй, переспрашивай. Веди диалог, а не монолог.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== STUDY ===== -->
+<section id="study" class="section section-dark">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag">Учёба</span>
+      <h2>ИИ в учёбе: как это работает правильно</h2>
+      <p class="sec-desc">Конкретные сценарии, которые реально помогают учиться</p>
+    </div>
+
+    <div class="scenarios-grid">
+
+      <div class="scenario reveal">
+        <div class="scenario-header">
+          <span class="sc-emoji">💡</span>
+          <h3>Объяснение сложных тем</h3>
+        </div>
+        <p>Не понимаешь тему из учебника? Попроси ИИ объяснить на трёх уровнях: просто, нормально, глубоко. Выбери уровень, на котором тебе интересно.</p>
+        <div class="sc-example">
+          <span class="sc-label">Попробуй:</span>
+          «Объясни производную в математике сначала очень просто, потом добавь детали. Я в 10 классе.»
+        </div>
+      </div>
+
+      <div class="scenario reveal">
+        <div class="scenario-header">
+          <span class="sc-emoji">🧪</span>
+          <h3>Персональные тесты</h3>
+        </div>
+        <p>Перед контрольной попроси ИИ составить 10 вопросов по теме, которые реально встречаются в заданиях. Отвечай — получай мгновенную обратную связь.</p>
+        <div class="sc-example">
+          <span class="sc-label">Попробуй:</span>
+          «Составь 10 вопросов по теме "Синтаксис русского языка" для 8 класса. Сначала задавай по одному.»
+        </div>
+      </div>
+
+      <div class="scenario reveal">
+        <div class="scenario-header">
+          <span class="sc-emoji">🗺️</span>
+          <h3>Ментальные карты и структура</h3>
+        </div>
+        <p>Плохо понимаешь как связаны понятия? Попроси ИИ объяснить структуру темы и связи между ключевыми понятиями. Потом нарисуй схему сам — это закрепляет.</p>
+        <div class="sc-example">
+          <span class="sc-label">Попробуй:</span>
+          «Опиши структуру темы "Клетка" как дерево понятий: главные ветки, подветки, связи между ними.»
+        </div>
+      </div>
+
+      <div class="scenario reveal">
+        <div class="scenario-header">
+          <span class="sc-emoji">🐛</span>
+          <h3>Разбор ошибок в работах</h3>
+        </div>
+        <p>Получил плохую оценку? Вставь свою работу и попроси ИИ найти конкретные ошибки с объяснением. Это лучший способ не повторять их.</p>
+        <div class="sc-example">
+          <span class="sc-label">Попробуй:</span>
+          «Вот моё сочинение. Найди 3 самые серьёзные ошибки в логике и аргументации. Почему это ошибки?»
+        </div>
+      </div>
+
+      <div class="scenario reveal">
+        <div class="scenario-header">
+          <span class="sc-emoji">🌍</span>
+          <h3>Изучение языков</h3>
+        </div>
+        <p>ИИ — идеальный партнёр для практики языка. Говори с ним на изучаемом языке, проси исправлять ошибки, объяснять грамматику в контексте.</p>
+        <div class="sc-example">
+          <span class="sc-label">Попробуй:</span>
+          «Let's have a conversation in English. My level is B1. Correct my grammar mistakes but let me finish my thoughts first.»
+        </div>
+      </div>
+
+      <div class="scenario reveal">
+        <div class="scenario-header">
+          <span class="sc-emoji">⏱️</span>
+          <h3>Быстрый контекст перед уроком</h3>
+        </div>
+        <p>Не успел прочитать параграф? Попроси ИИ дать ключевые идеи за 2 минуты. Это не замена чтению — но лучше прийти на урок с базовым пониманием, чем без него.</p>
+        <div class="sc-example">
+          <span class="sc-label">Попробуй:</span>
+          «Дай мне 5 ключевых идей параграфа про [тема]. Одно предложение на идею. Только самое важное.»
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK ===== -->
+<section id="work" class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag">Работа</span>
+      <h2>ИИ в работе: сценарии использования</h2>
+      <p class="sec-desc">Где ИИ реально экономит время и улучшает результат</p>
+    </div>
+
+    <div class="work-bento">
+
+      <div class="bento-card bento-wide reveal">
+        <div class="bento-icon">⚡</div>
+        <h3>Ускорение рутины</h3>
+        <p>Переформатирование данных, написание шаблонных писем, создание структуры документов — всё, что повторяется и не требует творчества. ИИ делает это в разы быстрее.</p>
+        <div class="bento-examples">
+          <span class="bex">Обработать список → таблицу</span>
+          <span class="bex">Шаблон письма</span>
+          <span class="bex">Конспект встречи</span>
+        </div>
+      </div>
+
+      <div class="bento-card reveal">
+        <div class="bento-icon">🔬</div>
+        <h3>Первичное исследование</h3>
+        <p>Быстро понять новую тему, получить обзор, найти направления для глубокого изучения. Не финальный источник, а стартовая точка.</p>
+      </div>
+
+      <div class="bento-card reveal">
+        <div class="bento-icon">🧹</div>
+        <h3>Редактура и корректура</h3>
+        <p>Проверить грамматику, улучшить стиль, сделать текст короче. ИИ как персональный редактор, доступный 24/7.</p>
+      </div>
+
+      <div class="bento-card reveal">
+        <div class="bento-icon">💻</div>
+        <h3>Помощь с кодом</h3>
+        <p>Объяснить чужой код, найти баг, предложить рефакторинг, написать документацию. Особенно ценно при изучении нового языка.</p>
+      </div>
+
+      <div class="bento-card reveal">
+        <div class="bento-icon">🎭</div>
+        <h3>Ролевые сценарии</h3>
+        <p>Подготовка к переговорам, репетиция презентации, отработка сложного разговора — попроси ИИ сыграть роль оппонента.</p>
+      </div>
+
+      <div class="bento-card bento-wide reveal">
+        <div class="bento-icon">📊</div>
+        <h3>Анализ и структурирование информации</h3>
+        <p>Вставь большой текст и попроси выделить ключевые тезисы, найти противоречия, структурировать аргументы. ИИ отлично обрабатывает большие объёмы текста.</p>
+        <div class="bento-examples">
+          <span class="bex">Саммари длинного документа</span>
+          <span class="bex">Найти противоречия</span>
+          <span class="bex">Выделить ключевые тезисы</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MYTHS ===== -->
+<section id="myths" class="section section-dark">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag sec-tag-orange">Разрушаем мифы</span>
+      <h2>Мифы об ИИ</h2>
+      <p class="sec-desc">Популярные заблуждения, которые мешают использовать ИИ правильно</p>
+    </div>
+
+    <div class="myths-grid">
+
+      <div class="myth-card reveal">
+        <div class="myth-header">
+          <span class="myth-icon myth-false">&#10007;</span>
+          <h3>«ИИ всё знает»</h3>
+        </div>
+        <p class="myth-text">ИИ не знает ничего. Он предсказывает вероятные продолжения текста на основе данных, на которых обучался. У него нет понимания, памяти или доступа к интернету в реальном времени (если это не указано явно).</p>
+        <div class="myth-truth"><strong>На самом деле:</strong> ИИ — это продвинутый автокомплит, а не всезнающий оракул.</div>
+      </div>
+
+      <div class="myth-card reveal">
+        <div class="myth-header">
+          <span class="myth-icon myth-false">&#10007;</span>
+          <h3>«ИИ заменит программистов»</h3>
+        </div>
+        <p class="myth-text">ИИ ускоряет написание кода, но не понимает бизнес-логику, архитектуру и контекст проекта. Код от ИИ нужно проверять, тестировать и интегрировать — всё это делает человек.</p>
+        <div class="myth-truth"><strong>На самом деле:</strong> ИИ заменит не программистов, а программистов, которые не используют ИИ.</div>
+      </div>
+
+      <div class="myth-card reveal">
+        <div class="myth-header">
+          <span class="myth-icon myth-false">&#10007;</span>
+          <h3>«Если ИИ сказал — значит правда»</h3>
+        </div>
+        <p class="myth-text">ИИ уверенно генерирует ложные факты, несуществующие книги и фейковые цитаты. Это называется «галлюцинации» и происходит из-за самой архитектуры моделей.</p>
+        <div class="myth-truth"><strong>На самом деле:</strong> ИИ оптимизирован звучать убедительно, а не быть правдивым.</div>
+      </div>
+
+      <div class="myth-card reveal">
+        <div class="myth-header">
+          <span class="myth-icon myth-false">&#10007;</span>
+          <h3>«ИИ думает как человек»</h3>
+        </div>
+        <p class="myth-text">У ИИ нет сознания, эмоций или понимания. Когда он пишет «я думаю» или «мне кажется» — это паттерн из обучающих данных, а не реальное мышление.</p>
+        <div class="myth-truth"><strong>На самом деле:</strong> ИИ — это математическая модель, имитирующая язык, не разум.</div>
+      </div>
+
+      <div class="myth-card reveal">
+        <div class="myth-header">
+          <span class="myth-icon myth-false">&#10007;</span>
+          <h3>«Использовать ИИ — это жульничество»</h3>
+        </div>
+        <p class="myth-text">Калькулятор тоже когда-то считался «жульничеством». ИИ — инструмент. Проблема не в использовании, а в том, КАК ты его используешь. Учиться с ИИ ≠ списывать через ИИ.</p>
+        <div class="myth-truth"><strong>На самом деле:</strong> Жульничество — выдавать чужое за своё. Использовать ИИ как помощника — нормально.</div>
+      </div>
+
+      <div class="myth-card reveal">
+        <div class="myth-header">
+          <span class="myth-icon myth-false">&#10007;</span>
+          <h3>«Чем длиннее промт — тем лучше»</h3>
+        </div>
+        <p class="myth-text">Длинный, но запутанный промт даст плохой результат. Важна не длина, а структура: контекст, задача, формат ответа. Короткий чёткий промт часто лучше длинного расплывчатого.</p>
+        <div class="myth-truth"><strong>На самом деле:</strong> Лучший промт — конкретный и структурированный, независимо от длины.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section id="quiz" class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag sec-tag-green">Проверь себя</span>
+      <h2>Тест: правильно ли ты используешь ИИ?</h2>
+      <p class="sec-desc">7 вопросов — узнай свой уровень</p>
+    </div>
+
+    <div class="quiz-wrap reveal" id="quizWrap">
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quizBar"></div>
+      </div>
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-result" id="quizResult" style="display:none">
+        <div class="quiz-score" id="quizScore"></div>
+        <p class="quiz-verdict" id="quizVerdict"></p>
+        <button class="btn btn-glow quiz-restart" id="quizRestart">Пройти заново</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEMPLATES ===== -->
+<section id="templates" class="section section-dark">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-tag">Шаблоны</span>
+      <h2>Готовые промт-шаблоны</h2>
+      <p class="sec-desc">Нажми «Копировать» — вставь в любой ИИ-чат — подставь своё содержимое</p>
+    </div>
+
+    <div class="templates-grid">
+
+      <div class="tpl-card reveal">
+        <div class="tpl-category">📚 Учёба</div>
+        <h4>Тьютор по теме</h4>
+        <div class="tpl-text" id="t1">Стань моим персональным тьютором по теме [ТЕМА]. Мой уровень: [НАЧАЛЬНЫЙ / СРЕДНИЙ].
+
+Сначала коротко объясни тему. Потом задай мне вопрос, чтобы проверить понимание. Жди моего ответа перед тем как продолжать. Если я ошибаюсь — не говори ответ, а задай наводящий вопрос.</div>
+        <button class="tpl-copy" data-copy="t1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Скопировать шаблон
+        </button>
+      </div>
+
+      <div class="tpl-card reveal">
+        <div class="tpl-category">🔍 Критика</div>
+        <h4>Жёсткий критик</h4>
+        <div class="tpl-text" id="t2">Сыграй роль строгого эксперта в области [ОБЛАСТЬ]. Вот моя работа:
+
+[ТЕКСТ / КОД / ИДЕЯ]
+
+Твоя задача: найти все слабые места, ошибки и возможности для улучшения. Не хвали общими словами. Будь конкретен: что именно не так и почему. Предложи конкретные исправления.</div>
+        <button class="tpl-copy" data-copy="t2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Скопировать шаблон
+        </button>
+      </div>
+
+      <div class="tpl-card reveal">
+        <div class="tpl-category">🧠 Обучение</div>
+        <h4>Феймановский метод</h4>
+        <div class="tpl-text" id="t3">Я собираюсь объяснить тебе тему [ТЕМА] своими словами. Слушай внимательно и после моего объяснения:
+1. Укажи, что я понял правильно
+2. Найди пробелы или неточности в моём объяснении
+3. Объясни то, что я упустил, простыми словами
+
+Готов? Слушай: [МОЁ ОБЪЯСНЕНИЕ]</div>
+        <button class="tpl-copy" data-copy="t3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Скопировать шаблон
+        </button>
+      </div>
+
+      <div class="tpl-card reveal">
+        <div class="tpl-category">✍️ Текст</div>
+        <h4>Умный редактор</h4>
+        <div class="tpl-text" id="t4">Ты — опытный редактор. Вот мой текст:
+
+[МОЙ ТЕКСТ]
+
+Задачи:
+1. Улучши ясность и логику без изменения моего смысла
+2. Сократи где можно, не теряя содержания
+3. Сохрани мой стиль и голос
+4. Объясни 3 главных изменения, которые ты сделал</div>
+        <button class="tpl-copy" data-copy="t4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Скопировать шаблон
+        </button>
+      </div>
+
+      <div class="tpl-card reveal">
+        <div class="tpl-category">🔧 Отладка</div>
+        <h4>Дебаггер кода</h4>
+        <div class="tpl-text" id="t5">Вот мой код на [ЯЗЫК]. Он должен делать [ЧТО ДОЛЖЕН ДЕЛАТЬ], но вместо этого [ЧТО ПРОИСХОДИТ].
+
+```
+[КОД]
+```
+
+Пожалуйста:
+1. Найди причину проблемы
+2. Объясни, почему это происходит (не просто что менять)
+3. Предложи исправление
+4. Если есть другие потенциальные проблемы — тоже укажи</div>
+        <button class="tpl-copy" data-copy="t5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Скопировать шаблон
+        </button>
+      </div>
+
+      <div class="tpl-card reveal">
+        <div class="tpl-category">🎯 Решения</div>
+        <h4>Анализ вариантов</h4>
+        <div class="tpl-text" id="t6">Помоги мне принять решение. Контекст: [СИТУАЦИЯ]
+
+Варианты, которые я рассматриваю:
+A) [ВАРИАНТ А]
+B) [ВАРИАНТ Б]
+
+Мои приоритеты: [ЧТО ВАЖНО ДЛЯ МЕНЯ]
+
+Составь таблицу сравнения по ключевым критериям. Укажи какие факты тебе нужны но неизвестны. Дай рекомендацию — но признай если ответ неоднозначен.</div>
+        <button class="tpl-copy" data-copy="t6">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Скопировать шаблон
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-dot"></span>
+        <strong>ИИ Правильно</strong>
+      </div>
+      <p class="footer-text">
+        Основано на исследовании<br/>
+        «Влияние нейросетей на процесс обучения: возможности, риски, перспективы» 2026
+      </p>
+      <p class="footer-note">Думай сам. Проверяй факты. Используй ИИ как инструмент — не как замену мышлению.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast">✓ Скопировано!</div>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" title="Наверх">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
